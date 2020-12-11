@@ -8,11 +8,11 @@ class AddForm extends React.Component {
     constructor() {
         super();
         this.state = {
-            id: Date.now(),
             name: '',
             position: '',
             nickname: '',
-            description: ''
+            description: '',
+            id: Date.now()
         }
     }
 
@@ -27,6 +27,7 @@ class AddForm extends React.Component {
         event.preventDefault();
         if (this.state.name && this.state.position && this.state.nickname){
             this.props.addSmurfData(this.state);
+            this.props.setErrorMessage('');
             this.setState({
                 name: '',
                 position: '',
@@ -56,7 +57,7 @@ class AddForm extends React.Component {
                     <input onChange={this.handleChange} value={this.state.description} name={"description"} id="description" />                                                            
                 </div>
 
-                {this.props.error && <div data-testid="errorAlert" className="alert alert-danger" role="alert">{this.props.error}</div>}
+                {this.props.error && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {this.props.error}</div>}
                 <button>Submit Smurf</button>
             </form>
         </section>);
