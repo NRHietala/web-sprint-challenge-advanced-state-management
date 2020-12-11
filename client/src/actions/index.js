@@ -12,12 +12,12 @@ export const fetchSmurfsData = () => dispatch => {
 
     axios
         .get('http://localhost:3333/smurfs')
-            .then(response => {
-                dispatch({ type: FETCH_SMURFS_SUCCESS, payload: response.data })
-            })
-            .catch(error => {
-                dispatch({ type: FETCH_SMURFS_FAILURE, payload: error })
-            })
+        .then(response => {
+            dispatch({ type: FETCH_SMURFS_SUCCESS, payload: response.data })
+        })
+        .catch(error => {
+            dispatch({ type: FETCH_SMURFS_FAILURE, payload: error })
+        })
 }
 
 export const addSmurfData = smurfData => dispatch => {
