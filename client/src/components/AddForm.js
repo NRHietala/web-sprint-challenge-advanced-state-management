@@ -56,7 +56,7 @@ class AddForm extends React.Component {
                     <input onChange={this.handleChange} value={this.state.description} name={"description"} id="description" />                                                            
                 </div>
 
-                {this.props.error && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {this.props.error}</div>}
+                {this.props.error && <div data-testid="errorAlert" className="alert alert-danger" role="alert">{this.props.error}</div>}
                 <button>Submit Smurf</button>
             </form>
         </section>);
@@ -71,7 +71,7 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { fetchSmurfsData, addSmurfData, setErrorMessage })(AddForm);
+export default connect(mapStateToProps, { addSmurfData, setErrorMessage, fetchSmurfsData })(AddForm);
 
 //Task List:
 //1. Add in all necessary import components and library methods.

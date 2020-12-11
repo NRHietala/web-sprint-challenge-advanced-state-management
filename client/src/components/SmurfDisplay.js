@@ -21,15 +21,6 @@ export class SmurfDisplay extends React.Component {
             </div>)
 
         }
-
-        if (this.props.error){
-            return(
-            <div>
-                <h2>Couldn't find any Smurfs!</h2>
-                <p>{this.props.error}</p>
-            </div>)
-
-        }
         return(<div>
             {
                 this.props.smurfs.map(smurf => {
