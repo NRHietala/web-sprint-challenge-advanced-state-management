@@ -1,6 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import { connect } from 'react-redux';
+
+import { fetchSmurfsData } from '../actions'
+
 
 export class SmurfDisplay extends React.Component {
+
+    constructor(props){
+        super(props);
+        console.log('hi')
+
+    }
+
     render() {
         return(<div>
             
