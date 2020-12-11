@@ -1,6 +1,39 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { fetchSmurfsData, addSmurfData, setErrorMessage } from '../actions';
 
 class AddForm extends React.Component {
+
+    constructor() {
+        super();
+        this.state = {
+            id: Date.now(),
+            name: '',
+            position: '',
+            nickname: '',
+            description: ''
+        }
+    }
+
+    handleChange = event => {
+        const value = event.target.value;
+        this.setState({
+            ...this.state, [event.target.name]: value
+        });
+    }
+
+    handleSubmit = event => {
+        event.preventDefault();
+        
+        this.props.addSmurfData(this.state);
+        this.setState({
+            name: '',
+            position: '',
+            nickname: '',
+            description: ''
+        });
+    }
 
     render() {
         return(<section>

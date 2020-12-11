@@ -3,6 +3,8 @@ import axios from 'axios';
 export const FETCH_SMURFS_START = 'FETCH_SMURFS_START';
 export const FETCH_SMURFS_SUCCESS = 'FETCH_SMURFS_SUCCESS';
 export const FETCH_SMURFS_FAILURE = 'FETCH_SMURFS_FAILURE';
+export const ADD_SMURF = 'ADD_SMURF';
+export const ADD_SMURF_FAIL = 'ADD_SMURF_FAIL';
 
 export const fetchSmurfsData = () => dispatch => {
 
@@ -14,8 +16,23 @@ export const fetchSmurfsData = () => dispatch => {
                 dispatch({ type: FETCH_SMURFS_SUCCESS, payload: response.data })
             })
             .catch(error => {
-                dispatch({ type: FETCH_SMURFS_FAILURE, payload: error.message })
+                dispatch({ type: FETCH_SMURFS_FAILURE, payload: error })
             })
+}
+
+export const addSmurfData = smurfData => dispatch => {
+    axios
+        .post('http://localhost:3333/smurfs', smurfData)
+        .then(response => {
+            dispatch({ type: ADD_SMURF, payload: smurfData });
+        })
+        .catch(error => {
+            dispatch({ type: FETCH_SMURFS_FAILURE, payload: error })
+        })
+}
+
+export const setErrorMessage = errorMessage => {
+    return({ type: ADD_SMURF_FAIL, payload: errorMessage });
 }
 
 //Task List:
