@@ -25,14 +25,17 @@ class AddForm extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        
-        this.props.addSmurfData(this.state);
-        this.setState({
-            name: '',
-            position: '',
-            nickname: '',
-            description: ''
-        });
+        if (this.state.name && this.state.position && this.state.nickname){
+            this.props.addSmurfData(this.state);
+            this.setState({
+                name: '',
+                position: '',
+                nickname: '',
+                description: ''
+            });
+        } else {
+            this.props.setErrorMessage('Please fill out all fields.')
+        }
     }
 
     render() {
