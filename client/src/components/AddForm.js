@@ -38,10 +38,19 @@ class AddForm extends React.Component {
     render() {
         return(<section>
             <h2>Add Smurf</h2>
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="name">Name:</label><br/>
-                    <input onChange={this.handleChange} name="name" id="name" />
+                    <input onChange={this.handleChange} value={this.state.name} name={"name"} id="name" />
+
+                    <label htmlFor="position">Position:</label><br/>
+                    <input onChange={this.handleChange} value={this.state.position} name={"position"} id="position" />
+
+                    <label htmlFor="nickname">Nickname:</label><br/>
+                    <input onChange={this.handleChange} value={this.state.nickname} name={"nickname"} id="nickname" />
+
+                    <label htmlFor="description">Description:</label><br/>
+                    <input onChange={this.handleChange} value={this.state.description} name={"description"} id="description" />                                                            
                 </div>
 
                 <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: </div>
@@ -51,7 +60,15 @@ class AddForm extends React.Component {
     }
 }
 
-export default AddForm;
+const mapStateToProps = state => {
+    return {
+        smurfs: state.smurfs,
+        isLoading: state.isLoading,
+        error: state.error
+    }
+}
+
+export default connect(mapStateToProps, { fetchSmurfsData, addSmurfData, setErrorMessage })(AddForm);
 
 //Task List:
 //1. Add in all necessary import components and library methods.
