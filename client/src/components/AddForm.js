@@ -53,7 +53,7 @@ class AddForm extends React.Component {
                     <input onChange={this.handleChange} value={this.state.description} name={"description"} id="description" />                                                            
                 </div>
 
-                <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: </div>
+                {this.props.error && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {this.props.error}</div>}
                 <button>Submit Smurf</button>
             </form>
         </section>);
