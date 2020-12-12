@@ -8,11 +8,11 @@ class AddForm extends React.Component {
     constructor() {
         super();
         this.state = {
+            id: Date.now(),
             name: '',
             position: '',
             nickname: '',
-            description: '',
-            id: Date.now()
+            description: ''
         }
     }
 
@@ -27,7 +27,6 @@ class AddForm extends React.Component {
         event.preventDefault();
         if (this.state.name && this.state.position && this.state.nickname){
             this.props.addSmurfData(this.state);
-            this.props.setErrorMessage('');
             this.setState({
                 name: '',
                 position: '',
@@ -35,7 +34,7 @@ class AddForm extends React.Component {
                 description: ''
             });
         } else {
-            this.props.setErrorMessage('Please fill out all fields.')
+            this.props.setErrorMessage('Please fill out all fields.');
         }
     }
 

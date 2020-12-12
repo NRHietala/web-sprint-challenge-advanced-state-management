@@ -1,17 +1,12 @@
 import React from 'react';
-
 import Smurf from './Smurf';
-
 import { connect } from 'react-redux';
-
 import { fetchSmurfsData } from '../actions/index'
-
 
 export class SmurfDisplay extends React.Component {
     componentDidMount(){
         this.props.fetchSmurfsData();
     }
-
     render() {
 
         if (this.props.isLoading){
@@ -19,7 +14,6 @@ export class SmurfDisplay extends React.Component {
             <div>
                 <h2>Getting those Smurfs!</h2>
             </div>)
-
         }
         return(<div>
             {

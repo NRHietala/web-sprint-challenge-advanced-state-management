@@ -11,13 +11,15 @@ export const reducer = (state = initialState, action) => {
         case FETCH_SMURFS_START:
             return ({
                 ...state,
-                isLoading: true
+                isLoading: true,
+                error: ''
             });
         case FETCH_SMURFS_SUCCESS:
             return ({
                 ...state,
                 smurfs: action.payload,
-                isLoading: false
+                isLoading: false,
+                error: ''
             });
         case FETCH_SMURFS_FAILURE:
             return ({
@@ -34,14 +36,15 @@ export const reducer = (state = initialState, action) => {
                     nickname: action.payload.nickname,
                     description: action.payload.description
                 }],
-                isLoading: false
+                isLoading: false,
+                error: ''
             });
         case ADD_SMURF_FAILURE:
             return ({
                 ...state,
                 isLoading: false,
                 error: action.payload
-            })
+            });
         default:
             return state;
     }
