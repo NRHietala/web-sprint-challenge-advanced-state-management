@@ -6,7 +6,7 @@ class AddForm extends React.Component {
     state = {
         name:"",
         position:"",
-        nickName:"",
+        nickname:"",
         description:""
     }
 
@@ -21,12 +21,12 @@ class AddForm extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault();
-         if ( this.state.name && this.state.position && this.state.nickName ) {
+         if ( this.state.name && this.state.position && this.state.nickname ) {
              this.props.postSmurf(this.state);
              this.setState({
                 name:"",
                 position:"",
-                nickName:"",
+                nickname:"",
                 description:""
              })
          } else {
@@ -58,12 +58,12 @@ class AddForm extends React.Component {
                         />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="nickName">Nickname:</label><br/>
+                    <label htmlFor="nickname">Nickname:</label><br/>
                         <input
                         onChange={this.handleChange}
-                        value={this.state.nickName}
-                        name="nickName"
-                        id="nickName" 
+                        value={this.state.nickname}
+                        name="nickname"
+                        id="nickname" 
                         />
                 </div>
                 <div className="form-group">

@@ -23,10 +23,24 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. What problem does the context API help solve?
+
+- Context api helps solving the problem of having more localized statemanagement. It's not always necessary to have large global systems like redux when state is contained in the same tree and no where else.
+
 2. In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+- Actions are the events coming from out UI which are then put through the reducer which we create to specifically mold our data to the state immutability so it doesn't affect state in other components trees. The store is the single point of truth because its outside of the application and we pull and mutate data from it without changing it at the source, only changing it where we need to.
+
 3. What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+- Application state would be having everything in the top level and drilling it down. Component state is more localized and we can hold state only as high as the lowest common ancestor among component trees. Why bring data all the way from the top if you don't need it anywhere in between, prop drilling can be a huge headache and prone to errors.
+
 4. Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+-Redux thunk lets us create asynchronus actions between action and reducer. It acts as middleware affecting action-creators we send through, stopping it, or letting it pass unchanged, its up to us. 
+
 5. What is your favorite state management system you've learned and this sprint? Please explain why!
+
+- Context API!!!! I can see the why redux is so important with large applicatoins, but for our purposes it was nice having to right 2-3 lines of code and have access to our data wherever we needed without so much boilerplate code!
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade. 
 

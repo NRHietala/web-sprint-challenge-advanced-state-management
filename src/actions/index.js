@@ -3,7 +3,6 @@ import axios from 'axios';
 export const GET_SMURF_START = 'GET_SMURF_START';
 export const GET_SMURF_SUCCESS = 'GET_SMURF_SUCCESS';
 export const GET_SMURF_FAILURE = 'GET_SMURF_FAILURE';
-export const POST_SMURF_START = 'POST_SMURF_START';
 export const POST_SMURF_SUCCESS = 'POST_SMURF_SUCCESS';
 export const POST_SMURF_FAILURE = 'POST_SMURF_FAILURE';
 

@@ -2,7 +2,6 @@ import {
   GET_SMURF_START,
   GET_SMURF_SUCCESS,
   GET_SMURF_FAILURE,
-  POST_SMURF_START,
   POST_SMURF_SUCCESS,
   POST_SMURF_FAILURE
 }
@@ -36,12 +35,18 @@ const reducer = (state = initialState, action)=>{
         error:action.payload
       };
     case POST_SMURF_SUCCESS: 
-      return {
-      ...state,
-      smurfs: action.payload,
-      isLoading: false,
-      error: ""
-    };
+      return ({
+        ...state, 
+        smurfs: [...state.smurfs,
+        {
+            name: action.payload.name,
+            position: action.payload.position,
+            nickname: action.payload.nickname,
+            description: action.payload.description
+        }],
+        isLoading: false,
+        error: ""
+    });
     case POST_SMURF_FAILURE:
       return {
         ...state,
