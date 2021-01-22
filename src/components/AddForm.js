@@ -10,6 +10,8 @@ class AddForm extends React.Component {
         description:""
     }
 
+    // CodeGrad submission test
+
     handleChange = event => {
         this.setState({
             [event.target.name]: event.target.value
