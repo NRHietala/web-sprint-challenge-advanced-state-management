@@ -11,10 +11,11 @@ export const getSmurfs = () => dispatch => {
   dispatch({ type: GET_SMURF_START });
 
   axios
-  .get("http://localhost:3333/smurfs")
+  .get('http://localhost:3333/smurfs')
     .then(res => {
       dispatch({ type: GET_SMURF_SUCCESS, payload: res.data })
       console.log(res)
+      debugger;
     })
     .catch(err => {
       dispatch({ type: GET_SMURF_FAILURE, payload: err.message })
@@ -34,6 +35,10 @@ export const postSmurf = newSmurf => dispatch => {
     dispatch({ type:POST_SMURF_FAILURE, payload:err.message })
     console.log(err)
   })
+}
+
+export const setError = errorMsg => {
+  return({ type:POST_SMURF_FAILURE, payload: errorMsg })
 }
 
 //Task List:

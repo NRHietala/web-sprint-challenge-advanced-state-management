@@ -8,10 +8,7 @@ import { Provider } from 'react-redux';
 import reducer from '../src/reducers';
 import thunk from 'redux-thunk';
 
-
 const store = createStore(reducer, applyMiddleware(thunk))
-
-console.log(store.getState())
 
 ReactDOM.render(
   <Provider store={store}>

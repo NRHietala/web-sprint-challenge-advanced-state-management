@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getSmurfs, postSmurf } from '../actions';
+import { getSmurfs, postSmurf, setError } from '../actions';
 
 class AddForm extends React.Component {
     state = {
@@ -14,12 +14,24 @@ class AddForm extends React.Component {
         this.setState({
             [event.target.name]: event.target.value
         })
+        console.log(this.state)
     }
 
     handleSubmit = event => {
         event.preventDefault();
-         // post new smurf, API still buggy, instructor looking into it
+         if ( this.state.name && this.state.position && this.state.nickName ) {
+             this.props.postSmurf(this.state);
+             this.setState({
+                name:"",
+                position:"",
+                nickName:"",
+                description:""
+             })
+         } else {
+             this.props.setError("Please fill out form completely.")
+         }
     }
+
 
     render() {
         return(<section>
@@ -61,11 +73,11 @@ class AddForm extends React.Component {
                         id="description" 
                         />
                 </div>
-                <div
+                {this.props.error && <div
                 data-testid="errorAlert"
                 className="alert alert-danger"
                 role="alert">Error:
-                </div>
+                </div>}
                 <button onClick={this.handleSubmit}>Submit Smurf</button>
             </form>
         </section>);
@@ -74,13 +86,13 @@ class AddForm extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        smurfs:state.smurfs,
-        isLoading:state.isLoading,
-        error:state.error
+        smurfs: state.smurfs,
+        isLoading: state.isLoading,
+        error: state.error
     }
 }
 
-export default connect(mapStateToProps, { getSmurfs, postSmurf })(AddForm)
+export default connect(mapStateToProps, { getSmurfs, postSmurf, setError})(AddForm)
 
 //Task List:
 //1. Add in all necessary import components and library methods.
