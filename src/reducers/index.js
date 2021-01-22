@@ -1,8 +1,62 @@
+import {
+  GET_SMURF_START,
+  GET_SMURF_SUCCESS,
+  GET_SMURF_FAILURE,
+  POST_SMURF_START,
+  POST_SMURF_SUCCESS,
+  POST_SMURF_FAILURE
+}
+from '../actions';
 
 export const initialState = {
+  smurfs:[],
+  isLoading: false,
+  error:""
 }
 
-const reducer = ()=>{
+const reducer = (state = initialState, action)=>{
+  switch(action.type) {
+    case GET_SMURF_START:
+      return {
+        ...state,
+        isLoading: true,
+        error:""
+      };
+    case GET_SMURF_SUCCESS:
+      return {
+        ...state,
+        smurfs: action.payload,
+        isLoading: false,
+        error:""
+      };
+    case GET_SMURF_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        error:action.payload
+      };
+    case POST_SMURF_START:
+      return {
+        ...state,
+        isLoading: true,
+        error:""
+      };
+    case POST_SMURF_SUCCESS: 
+    return {
+      ...state,
+      smurfs: action.payload,
+      isLoading: false,
+      error: ""
+    };
+    case POST_SMURF_FAILURE:
+      return {
+        ...state,
+        isLoading:false,
+        error: action.payload
+      };
+    default:
+      return state;
+  }
 }
 
 export default reducer;
