@@ -1,6 +1,24 @@
 import React from 'react';
+import { connect } from 'redux';
+import { getSmurfs, postSmurf } from '../actions';
 
 class AddForm extends React.Component {
+    state = {
+        name:"",
+        position:"",
+        nickName:"",
+        description:""
+    }
+
+    handleChange = event => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+    handleSubmit = event => {
+
+    }
 
     render() {
         return(<section>
@@ -12,7 +30,7 @@ class AddForm extends React.Component {
                 </div>
 
                 <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: </div>
-                <button>Submit Smurf</button>
+                <button onClick={this.handleSubmit}>Submit Smurf</button>
             </form>
         </section>);
     }
