@@ -10,6 +10,9 @@ import thunk from 'redux-thunk';
 
 const store = createStore(reducer, applyMiddleware(thunk))
 
+const { worker } = require('./mocks/browser');
+worker.start();
+
 ReactDOM.render(
   <Provider store={store}>
     <App />

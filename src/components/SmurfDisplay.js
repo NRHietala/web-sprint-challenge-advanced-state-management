@@ -2,11 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getSmurfs } from '../actions';
 
+
 import Smurf from './Smurf';
 
 export class SmurfDisplay extends React.Component {
     componentDidMount() {
-        this.props.getSmurfs();
+       this.props.getSmurfs();
     }
 
     render() { 

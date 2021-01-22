@@ -35,14 +35,8 @@ const reducer = (state = initialState, action)=>{
         isLoading: false,
         error:action.payload
       };
-    case POST_SMURF_START:
-      return {
-        ...state,
-        isLoading: true,
-        error:""
-      };
     case POST_SMURF_SUCCESS: 
-    return {
+      return {
       ...state,
       smurfs: action.payload,
       isLoading: false,
